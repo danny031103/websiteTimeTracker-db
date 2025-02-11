@@ -10,3 +10,11 @@ Clone this repository to your local machine. In Firefox, visit the [debugging me
 
 ## Contributing
 
+Contributors should read the [contribution guide](/CONTRIBUTING.md) before making contributions to the project.
+
+## Contributors
+
+[Vasily Belousov](https://github.com/avmvng)
+[Dan Khaitov](https://github.com/DanKhaitov)
+[Josh Lavroff](https://github.com/joshlavroff)
+
