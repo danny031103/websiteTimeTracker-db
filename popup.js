@@ -11,12 +11,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function updateTimes() {
       try {
         
-        const timeData = await browser.runtime.sendMessage({ type: 'getCurrentTimes' });
+        const timeData = await browser.runtime.sendMessage({type: 'getCurrentTimes' });
         
-        
-        const sortedSites = Object.entries(timeData)
-          .sort(([, a], [, b]) => b - a);
-        
+        const sortedSites = Object.entries(timeData).sort(([a], [b]) => b - a);
         
         timeList.innerHTML = '';
         
@@ -27,7 +24,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           timeList.appendChild(div);
           return;
         }
-        
         
         sortedSites.forEach(([domain, time]) => {
           const div = document.createElement('div');
@@ -41,9 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }
     
-    
     await updateTimes();
-    
     
     setInterval(updateTimes, 1000);
   });
