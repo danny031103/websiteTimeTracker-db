@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     async function updateTimes() {
       try {
+        const [currentTab] = await browser.tabs.query({ active: true, currentWindow: true });
+        const currentDomain = new URL(currentTab.url).hostname;
         
         const timeData = await browser.runtime.sendMessage({type: 'getCurrentTimes' });
         
@@ -29,6 +31,10 @@ document.addEventListener('DOMContentLoaded', async () => {
           const div = document.createElement('div');
           div.className = 'site-time';
           div.textContent = `${domain}: ${formatTime(time)}`;
+          if (domain === currentDomain) {
+            div.style.fontWeight = 'bold';
+            div.style.color = '#481f01';
+            }
           timeList.appendChild(div);
         });
       } catch (error) {
