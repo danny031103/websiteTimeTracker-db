@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         const timeData = await browser.runtime.sendMessage({type: 'getCurrentTimes' });
         
-        const sortedSites = Object.entries(timeData).sort(([a], [b]) => b - a);
+        const sortedSites = Object.entries(timeData).sort(([,a], [,b]) => b - a);
         
         timeList.innerHTML = '';
         
